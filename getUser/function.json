@@ -1,0 +1,31 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods" : [
+        "get"
+      ],
+      "route" : "users/{partitionKey}/{id}"
+    },
+    {
+      "name" : "userRecord",
+      "direction" : "in",
+      "type" : "cosmosDB",
+      "databaseName" : "SPN",
+      "collectionName" : "users",
+      "sqlQuery" : "SELECT c.id, c.firstName, c.lastName, c.email, c.address, c.roster from c WHERE c.id = {id}",
+      "leaseCollectionName" : "leases",
+      "createLeaseCollectionIfNotExists" : true,
+      "connectionStringSetting" : "cosmosDbConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "puqueue",
+      "connection": "sbQueuecon"
+    },
+  {
+    "name" : "$return",
+    "type" : "cosmosDB",
+    "direction" : "out",
+    "leaseCollectionName" : "leases",
+    "createLeaseCollectionIfNotExists" : true,
+    "databaseName" : "SPN",
+    "collectionName" : "players",
+    "createIfNotExists" : true,
+    "connectionStringSetting" : "cosmosDbConnectionString"
+
+  }
+  ]
+}

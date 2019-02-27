@@ -1,0 +1,27 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ],
+      "route" : "players/{partitionKey}/{id}"
+    },
+    {
+      "type": "serviceBus",
+      "name" : "cuSbQueue",
+      "queueName" : "puqueue",
+      "connection" : "sbQueueCon",
+      "direction" : "out"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

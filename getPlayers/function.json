@@ -1,0 +1,29 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods" : [
+        "get"
+      ],
+      "route" : "players"
+    },
+    {
+      "name" : "documents",
+      "direction" : "in",
+      "type" : "cosmosDB",
+      "databaseName" : "SPN",
+      "collectionName" : "players",
+      "sqlQuery" : "SELECT c.id, c.firstName, c.lastName, c.team, c.stats from c",
+      "connectionStringSetting" : "cosmosDBConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

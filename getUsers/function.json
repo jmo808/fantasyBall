@@ -1,0 +1,29 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods" : [
+        "get"
+      ],
+      "route" : "users"
+    },
+    {
+      "name" : "documents",
+      "direction" : "in",
+      "type" : "cosmosDB",
+      "databaseName" : "SPN",
+      "collectionName" : "users",
+      "sqlQuery" : "SELECT c.id, c.firstName, c.lastName, c.email, c.address, c.roster from c",
+      "connectionStringSetting" : "cosmosDBConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
