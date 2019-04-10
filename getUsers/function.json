@@ -17,7 +17,7 @@
       "type" : "cosmosDB",
       "databaseName" : "SPN",
       "collectionName" : "users",
-      "sqlQuery" : "SELECT c.id, c.firstName, c.lastName, c.email, c.address, c.roster from c",
+      "sqlQuery" : "SELECT c.id, c.firstName, c.lastName, c.email, c.address, c.total, c.roster from c",
       "connectionStringSetting" : "cosmosDBConnectionString"
     },
     {

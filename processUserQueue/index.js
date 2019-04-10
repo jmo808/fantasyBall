@@ -1,5 +1,7 @@
 module.exports = async function(context, mySbMsg) {
   context.log('JavaScript ServiceBus queue trigger function processed message', mySbMsg);
+  return mySbMsg;
+  /*
   return JSON.stringify({
     id: mySbMsg.id,
     firstName: mySbMsg.firstName,
@@ -13,10 +15,19 @@ module.exports = async function(context, mySbMsg) {
       country: mySbMsg.country
     },
     roster: {
-      player1: mySbMsg.player1,
-      player2: mySbMsg.player2,
-      player3: mySbMsg.player3
+      player1: {
+        name: mySbMsg.roster.player1.name,
+        score: mySbMsg.roster.player1.score
+      },
+      player2: {
+        name: mySbMsg.roster.player2.name,
+        score: mySbMsg.roster.player2.score
+      },
+      player3: {
+        name: mySbMsg.roster.player3.name,
+        score: mySbMsg.roster.player3.score
+      }
     },
     partitionKey: mySbMsg.partitionKey
-  });
+  });*/
 };

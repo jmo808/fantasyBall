@@ -9,6 +9,13 @@
       "databaseName": "SPN",
       "collectionName": "players",
       "createLeaseCollectionIfNotExists": true
+    },
+    {
+      "name": "cuSbQueue",
+      "type": "serviceBus",
+      "direction": "out",
+      "queueName": "cuqueue",
+      "connection": "sbQueuecon"
     }
   ]
 }
