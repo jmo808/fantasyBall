@@ -22,7 +22,10 @@ module.exports = async function (context, documents) {
             partitionKey: "1"
         };
         const messages = [];
-        const { result: results } = await client.database(databaseId).container(containerUser).items.query(querySpec, options).toArray();
+        const { result: results } = await client.database(databaseId)
+            .container(containerUser)
+            .items.query(querySpec, options)
+            .toArray();
         for (let queryResult of results) {
             if (queryResult.roster.player1.name == doc.id) {
                 queryResult.roster.player1.score = doc.total;
