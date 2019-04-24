@@ -1,12 +1,19 @@
-module.exports = async function (context, req) {
-  context.log('JavaScript HTTP trigger function processed a request.', req.body);
+module.exports = async function (context) {
+  context.log('JavaScript HTTP trigger function processed a request.');
   const CosmosClient = require('@azure/cosmos').CosmosClient;
   const databaseId = 'SPN';
-  const containerId = 'players';
-  var splits = process.env.cosmosDbConnectionString.split(";")
-  var endpoint = splits[0].split("AccountEndpoint=")[1];
-  var masterKey = splits[1].split("AccountKey=")[1];
+  const containerId = 'player';
+  let splits = process.env.cosmosDbConnectionString.split(";")
+  let endpoint = splits[0].split("AccountEndpoint=")[1];
+  let masterKey = splits[1].split("AccountKey=")[1];
   const client = new CosmosClient({ endpoint , auth: { masterKey } });
-  await client.database(databaseId).container(containerId).item(context.bindingData.id).delete({ partitionKey: context.bindingData.partitionKey});
+  const options = {
+    partitionKey: new String(context.bindingData.partitionKey)
+  }
+  console.log(options);
+  await client.database(databaseId)
+    .container(containerId)
+    .item(context.bindingData.id)
+    .delete(options);
   context.log(`Deleted item: ${context.bindingData.id}\n`);
 };
