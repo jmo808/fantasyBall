@@ -3,7 +3,7 @@ module.exports = async function (context, documents) {
     const databaseId = 'SPN';
     const containerId = 'players';
     const containerUser = 'users';
-    let splits = process.env.cosmosDbConnectionString.split(";")
+    let splits = process.env["cosmosDbConnectionString"].split(";")
     let endpoint = splits[0].split("AccountEndpoint=")[1];
     let masterKey = splits[1].split("AccountKey=")[1];
     const client = new CosmosClient({ endpoint , auth: { masterKey } });
