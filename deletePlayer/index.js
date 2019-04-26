@@ -4,8 +4,11 @@ module.exports = async function (context) {
   const databaseId = 'SPN';
   const containerId = 'player';
   let splits = process.env["cosmosDbConnectionString"].split(";")
+  console.log(splits)
   let endpoint = splits[0].split("AccountEndpoint=")[1];
   let masterKey = splits[1].split("AccountKey=")[1];
+  console.log(endpoint)
+  console.log(masterKey)
   const client = new CosmosClient({ endpoint , auth: { masterKey } });
   const options = {
     partitionKey: new String(context.bindingData.partitionKey)
