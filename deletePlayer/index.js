@@ -13,7 +13,7 @@ module.exports = async function (context) {
   const options = {
     partitionKey: new String(context.bindingData.partitionKey)
   }
-  console.log(options);
+  context.log(options);
   await client.database(databaseId)
     .container(containerId)
     .item(context.bindingData.id)
