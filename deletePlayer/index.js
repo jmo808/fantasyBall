@@ -2,7 +2,7 @@ module.exports = async function (context) {
   context.log('JavaScript HTTP trigger function processed a request.');
   const CosmosClient = require('@azure/cosmos').CosmosClient;
   const databaseId = "SPN";
-  const containerId = "player";
+  const containerId = "players";
   let splits = process.env["cosmosDbConnectionString"].split(";");
   let endpoint = splits[0].split("AccountEndpoint=")[1];
   let masterKey = splits[1].split("AccountKey=")[1];
