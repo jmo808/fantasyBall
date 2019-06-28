@@ -1,7 +1,6 @@
 module.exports = async function (context, documents) {
     const CosmosClient = require('@azure/cosmos').CosmosClient;
     const databaseId = 'SPN';
-    const containerId = 'players';
     const containerUser = 'users';
     let splits = process.env["cosmosDbConnectionString"].split(";")
     let endpoint = splits[0].split("AccountEndpoint=")[1];

@@ -8,9 +8,9 @@ module.exports = async function (context) {
   let masterKey = splits[1].split("AccountKey=")[1];
   const client = new CosmosClient({ endpoint , auth: { masterKey } });
   const options = {
-    partitionKey: new String(context.bindingData.partitionKey)
+    partitionKey: "1"
   }
-  console.log(options);
+  context.log(options);
   await client.database(databaseId)
     .container(containerId)
     .item(context.bindingData.id)
