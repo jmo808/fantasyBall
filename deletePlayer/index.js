@@ -7,14 +7,13 @@ module.exports = async function (context) {
   let endpoint = splits[0].split("AccountEndpoint=")[1];
   let masterKey = splits[1].split("AccountKey=")[1];
   const client = new CosmosClient({ endpoint , auth: { masterKey } });
-  const id = context.bindingData.id
   const options = {
     partitionKey: '1'
   };
   try {
     const { item } = await client.database(databaseId)
       .container(containerId)
-      .item(id)
+      .item(context.bindingData.id)
       .delete(options);
   } catch (err) {
     context.log(err)
